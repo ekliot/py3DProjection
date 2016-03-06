@@ -98,40 +98,42 @@ def cube( size, rotX, rotY, rotZ ):
 
 
       # drawing the cube, one edge at a time
-    up()
-    setpos( finA )
-    down()
 
       # draw AC, AB, AE
-    setpos( finC )
-    setpos( finA )
-    setpos( finB )
-    setpos( finA )
-    setpos( finE )
+    drawLine( finA, finC )
+    drawLine( finA, finB )
+    drawLine( finA, finE )
 
       # draw EG, EF
-    setpos( finG )
-    setpos( finE )
-    setpos( finF )
+    drawLine( finE, finG )
+    drawLine( finE, finF )
 
       # draw FB, FH
-    setpos( finB )
-    setpos( finF )
-    setpos( finH )
+    drawLine( finF, finB )
+    drawLine( finF, finH )
 
       # draw HG, HD
-    setpos( finG )
-    setpos( finH )
-    setpos( finD )
+    drawLine( finH, finG )
+    drawLine( finH, finD )
 
       # draw DB, DC
-    setpos( finB )
-    setpos( finD )
-    setpos( finC )
+    drawLine( finD, finB )
+    drawLine( finD, finC )
 
       # draw CG
-    setpos( finG )
+    drawLine( finC, finG )
 
+def drawLine( pt1, pt2 ):
+    pos = position()
+
+    up()
+    setpos(pt1)
+    down()
+    setpos(pt2)
+    up()
+
+    if pos != position():
+        setpos(pos)
 
 """
 animates the rotation of a cube from its 'home' position
@@ -159,19 +161,18 @@ def animateCube( size, rotX, rotY, rotZ, steps ):
 
       # execute an animation for each frame
     for f in frames:
-        reset()
-        ht()
-        speed( 0 )
+        clear()
         cube( size, f[ 0 ], f[ 1 ], f[ 2 ] )
 
 """
 
 """
 def main():
+    ht()
+    speed(0)
+
     while input("\n  Press enter to continue, input 'bye' to end... ") != 'bye':
-        reset()
-        ht()
-        speed( 0 )
+        clear()
 
         size = int(input("  cube size?\n\t"))
 

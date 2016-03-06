@@ -7,66 +7,75 @@ the indeces of the lists correspond to the rows and
 columns of a matrix
 
 for example:
+
 myMtx = [ [ a, b ], [ c, d ] ]
+
 to access a is mtMtx[0][0], as it corresponds to
 row 0 and column 0 in a matrix of form:
 | a b |
 | c d |
 
 the matrices included as functions are:
-+3D to 2D orthographic projection
-+3D translation matrices for rotation along the x, y, and z axes
-+a matrix representing a 3D coordinate (x,y,z)
+ + 3D to 2D orthographic projection
+ + 3D translation matrices for rotation along the x, y, and z axes, each
+ + a matrix representing a 3D coordinate (x,y,z)
 
 Author: Elijah Kliot
 """
 
 from math import *
 
+
+"""
+returns :: a 3D to 2D orthographic projection matrix
+"""
 def transMatrix():
-    """
-    returns a 3D to 2D orthographic projection matrix
-    """
     matrix = [[ 1, 0, 0 ],
               [ 0, 1, 0 ],
               [ 0, 0, 0 ]]
     return matrix
 
-def rotXMatrix( theta ):
-    """
-    theta -- angle of rotation in radians
 
-    returns a matrix for rotation of a 3D coordinate
-    around the X axis by theta degrees
-    """
+
+
+
+"""
+theta :: float :: angle of rotation in radians
+
+returns :: a rotation matrix around the X axis by theta degrees
+"""
+def rotXMatrix( theta ):
     matrix = [[ 1,            0,                 0 ],
               [ 0, cos( theta ), -( sin( theta ) ) ],
               [ 0, sin( theta ),    cos( theta )   ]]
     return matrix
 
-def rotYMatrix( theta ):
-    """
-    theta -- angle of rotation in radians
+"""
+theta :: float :: angle of rotation in radians
 
-    returns a matrix for rotation of a 3D coordinate
-    around the Y axis by theta degrees
-    """
+returns :: a rotation matrix around the Y axis by theta degrees
+"""
+def rotYMatrix( theta ):
     matrix = [[      cos( theta ), 0, sin( theta ) ],
               [                 0, 1,            0 ],
               [ -( sin( theta ) ), 0, cos( theta ) ]]
     return matrix
 
-def rotZMatrix( theta ):
-    """
-    theta -- angle of rotation in radians
+"""
+theta :: float :: angle of rotation in radians
 
-    returns a matrix for rotation of a 3D coordinate
-    around the Z axis by theta degrees
-    """
+returns :: a rotation matrix around the Z axis by theta degrees
+"""
+def rotZMatrix( theta ):
+
     matrix = [[ cos( theta ), -( sin( theta ) ), 0 ],
               [ sin( theta ),      cos( theta ), 0 ],
               [            0,                 0, 1 ]]
     return matrix
+
+
+
+
 
 """
 x :: float :: x-coordinate for a point in a 3D plane
@@ -78,7 +87,8 @@ returns a matrix for given 3D coordinates
 def pointMatrix( x, y, z ):
 
     """
-         VALIDATE ARGS AS NUMERALS HERE
+        VALIDATE ARGS AS NUMERALS HERE
+
     """
 
     matrix = [[ x ],
@@ -86,6 +96,10 @@ def pointMatrix( x, y, z ):
               [ z ]]
 
     return matrix
+
+
+
+
 
 """
 multiplies two matrices by building a product
@@ -131,13 +145,27 @@ def matrixMult( mat1, mat2 ):
 
     return base
 
+
+
+
+
 """
+tests to see if the contents of a given matrix are valid (all numerals)
+
+mat :: a matrix
+
+returns :: bool :: whether the contents of the matrix are valid
 """
 def validateContents( mat ):
-    return
+    return True
 
 """
 validates that two matrices may be properly multiplied
+
+mat1 :: a matrix
+mat2 :: a matrix
+
+returns :: bool :: whether the two matrices may be multiplied
 """
 def validateSizes( mat1, mat2 ):
-    return
+    return True
