@@ -35,7 +35,7 @@ def transMatrix():
 def rotXMatrix( theta ):
     """
     theta -- angle of rotation in radians
-    
+
     returns a matrix for rotation of a 3D coordinate
     around the X axis by theta degrees
     """
@@ -68,31 +68,46 @@ def rotZMatrix( theta ):
               [            0,                 0, 1 ]]
     return matrix
 
-def pointMatrix( x, y, z ):
-    """
-    x; y; z -- coordinates for a point in a 3D plane
+"""
+x :: float :: x-coordinate for a point in a 3D plane
+y :: float :: y-coordinate for a point in a 3D plane
+z :: float :: z-coordinate for a point in a 3D plane
 
-    returns a matrix for given 3D coordinates
+returns a matrix for given 3D coordinates
+"""
+def pointMatrix( x, y, z ):
+
     """
+         VALIDATE ARGS AS NUMERALS HERE
+    """
+
     matrix = [[ x ],
               [ y ],
               [ z ]]
+
     return matrix
 
+"""
+multiplies two matrices by building a product
+matrix based on the dimensions of the two matrices
+being multiplied, and then filling the product
+matrix with the results of multiplying the two
+matrices
+
+mat1 :: a MxP matrix
+mat2 :: a PxN matrix
+
+returns the product of the two matrices
+"""
 def matrixMult( mat1, mat2 ):
-    """
-    mat1; mat2 -- any matrix of list-in-list format
 
-    multiplies two matrices by building a product
-    matrix based on the dimensions of the two matrices
-    being multiplied, and then filling the product
-    matrix with the results of multiplying the two
-    matrices
-
-    returns the product of the two matrices
     """
-    
-    #building the skeleton for the product matrix
+        MATRIX VALIDATION GOES HERE
+
+        if validateContents(mat1) and validateContents(mat1) and validateSizes(mat1,mat2)
+    """
+
+      # building the skeleton for the product matrix
     base = []
     for row in range( len( mat1 ) ):
         base.append( [] )
@@ -100,13 +115,13 @@ def matrixMult( mat1, mat2 ):
         for row in range( len( base ) ):
             base[ row ].append( [] )
 
-    #filling out the product matrix with the resulting values
+      # filling out the product matrix with the resulting values
     for row in range( len( base ) ):
         for col in range( len( base[ row ] ) ):
             for wor in range( len( mat2 ) ):
                 base[ row ][ col ].append( mat1[ row ][ wor ] * mat2[ wor ][ col ] )
 
-    #adding up the values for each row/column combo
+      # adding up the values for each row/column combo
     for row in range( len( base ) ):
         for col in range( len( base[ row ] ) ):
             tot = 0
@@ -115,3 +130,14 @@ def matrixMult( mat1, mat2 ):
             base[ row ][ col ] = tot
 
     return base
+
+"""
+"""
+def validateContents( mat ):
+    return
+
+"""
+validates that two matrices may be properly multiplied
+"""
+def validateSizes( mat1, mat2 ):
+    return
